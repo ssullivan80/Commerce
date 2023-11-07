@@ -17,8 +17,10 @@ function App() {
 
   useEffect(() => {
     const buyerId = getCookie('buyerId');
+    console.log(`getting basket ${buyerId}`);
 
     if (buyerId) {
+      console.log("getting basket")
       agent.Basket.get()
         .then(basket => dispatch(setBasket(basket)))
         .catch(error => console.log(error))
@@ -26,7 +28,7 @@ function App() {
     } else {
       setLoading(false);
     }
-  }, [setBasket])
+  }, [dispatch])
 
   const paletteType = darkMode ? 'dark' : 'light';
   const theme = createTheme({
